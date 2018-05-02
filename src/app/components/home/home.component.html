@@ -1,0 +1,26 @@
+<div class="container top-container">
+  <div class="row">
+    <div class="col-md-3" >
+    <label for="searchValue">Search Users</label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Username..."
+      (keyup)="searchUser()"
+      [(ngModel)]="searchValue">
+    </div>
+    <div class="cold-md-12 main-container" *ngIf="searchValue.length > 1">
+      <div class="card-columns">
+          <div
+          class="card animated fadeIn fast pointer"
+          *ngFor="let user of _usersService.userList?.items | slice:0:9"
+          [routerLink]="['/user', user.login]">
+            <img class="card-img-top" [src]="user.avatar_url" alt="user.avatar_url">
+            <div class="card-body">
+              <h5 class="card-title">{{ user.login }}</h5>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

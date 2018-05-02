@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-lg-5">
+      <div class="card animated fadeIn" style="width: 20rem;">
+        <img *ngIf="_usersService.userInfo?.avatar_url" [src]="_usersService.userInfo?.avatar_url" class="img-fluid" alt="Responsive image">
+        <div class="card-body">
+          <h1>{{_usersService.userInfo?.userName }}</h1>
+          <ul class="list-group">
+              <li class="list-group-item">Bio: {{ _usersService.userInfo?.bio }}</li>
+              <li class="list-group-item">
+                  <p>Following</p>
+                  {{ _usersService.userInfo?.following }}
+              </li>
+              <li class="list-group-item">
+                  <p>Followers</p>
+                  {{ _usersService.userInfo?.followers }}
+              </li>
+              <li class="list-group-item">
+                  <p>Public Gists</p>
+                  {{ _usersService.userInfo?.public_gists }}
+              </li>
+              <li class="list-group-item">
+                  <p>Public Repos</p>
+                  {{ _usersService.userInfo?.public_repos }}
+              </li>
+            </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6 col-lg-7">
+        <h1>Repositories</h1>
+        <div class="card-columns">
+            <div
+            class="card animated fadeIn"
+            *ngFor="let repo of _usersService.userRepos">
+              <div class="card-body">
+                <h5 class="card-title">{{ repo.name }}</h5>
+                <a [href]="repo.html_url"></a>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
